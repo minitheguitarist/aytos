@@ -2,6 +2,22 @@
 
 Yozgat için atık yağ toplama **Android prototipi**. Flutter + SQLite ile tek telefonda çalışır. Kullanıcı ve admin hesapları aynı yerel veriyi kullanır; sunucu veya cihaz bağlantısı yoktur.
 
+## Android'e kurulum
+
+İlk herkese açık test sürümü: [v0.1.0-beta.1](https://github.com/minitheguitarist/aytos/releases/tag/v0.1.0-beta.1).
+
+1. Telefonunuzdan [AYTOS APK dosyasını indirin](https://github.com/minitheguitarist/aytos/releases/download/v0.1.0-beta.1/aytos-v0.1.0-beta.1.apk).
+2. İndirilen dosyayı açın. Android isterse indirdiğiniz tarayıcı veya dosya yöneticisi için bu kaynaktan uygulama yükleme izni verin.
+3. Uygulamayı kurup hesap oluşturun. Yozgat dışında test ederken **Demo konum** seçeneğini kullanın; teslim için [Demo QR](docs/demo-qr.png) kodunu başka bir ekrandan okutun.
+
+Bu APK Android 7.0 ve üzeri için ARM, ARM64 ve x86_64 mimarilerini içerir.
+Test sürümü mevcut demo anahtarıyla imzalanır. Önceki yerel kurulumla aynı
+anahtar korunur; farklı imzayla kurulmuş bir APK üzerine güncelleme yapılamaz.
+Veriler her telefonda ayrıdır; uygulamayı kaldırmak yerel kayıtları siler.
+
+Sorun bildirirken telefon modeli, Android sürümü, uygulama sürümü ve hatayı
+tekrarlama adımlarını [GitHub Issues](https://github.com/minitheguitarist/aytos/issues) üzerinden paylaşabilirsiniz.
+
 ## Çalıştırma
 
 Flutter stable ve Android SDK kurulu bir bilgisayarda:
@@ -11,13 +27,18 @@ flutter pub get
 flutter run
 ```
 
-APK üretmek için:
+Paylaşılabilir test APK'sını üretmek için:
 
 ```sh
-flutter build apk --debug
+flutter build apk --release
 ```
 
-Çıktı: `build/app/outputs/flutter-apk/app-debug.apk`. Bu bir demo derlemesidir. Yayın için ayrı imzalama ayarı gerekir; mevcut release yapılandırması da demo anahtarını kullanır.
+Çıktı: `build/app/outputs/flutter-apk/app-release.apk`. Bu, release modunda
+derlenen bir demo APK'sıdır; mevcut yapılandırma demo imza anahtarını kullanır.
+Google Play'de kalıcı dağıtım için ayrı bir yayın anahtarı yapılandırılmalıdır.
+Test sürümlerinin aynı imzayla güncellenebilmesi için bu bilgisayardaki
+`~/.android/debug.keystore` dosyasını özel olarak yedekleyin; repoya veya
+release dosyalarına eklemeyin.
 
 ## Demo
 
